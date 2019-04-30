@@ -1,51 +1,42 @@
-import React from 'react'
-import App, { Container } from 'next/app'
-import Link from 'next/link'
-import {
-  Layout,
-  NavLinks,
-  Pagination
-} from 'mdx-docs'
+import React from "react";
+import App, { Container } from "next/app";
+import Link from "next/link";
+import { Layout, NavLinks, Pagination } from "mdx-docs";
+import { Button } from "rimble-ui";
 
 const routes = [
-  { name: 'Home', path: '/' },
-  { name: 'Getting Started', path: '/getting-started' },
-  { name: 'Components', path: '/components' },
-  { name: 'Button', path: '/components/Button' },
-]
+  { name: "Home", path: "/" },
+  { name: "Getting Started", path: "/getting-started" },
+  { name: "Components", path: "/components" },
+  { name: "Button", path: "/components/Button" },
+  { name: "RimbleButton", path: "/components/RimbleButton" }
+];
 
 const components = {
-  a: ({ href, ...props }) =>
+  a: ({ href, ...props }) => (
     <Link href={href}>
       <a {...props} />
     </Link>
-}
+  )
+};
 
 export default class MyApp extends App {
-  static async getInitialProps ({ Component, router, ctx }) {
-    let page = {}
+  static async getInitialProps({ Component, router, ctx }) {
+    let page = {};
 
     if (Component.getInitialProps) {
-      page = await Component.getInitialProps(ctx)
+      page = await Component.getInitialProps(ctx);
     }
 
-    return { page }
+    return { page };
   }
 
-  render () {
-    const {
-      Component,
-      page,
-      headManager,
-      ...props
-    } = this.props
+  render() {
+    const { Component, page, headManager, ...props } = this.props;
 
     return (
       <Container>
-        <Layout
-          {...props}
-          components={components}
-          routes={routes}>
+        <Layout {...props} components={components} routes={routes}>
           <Layout.MenuToggle />
           <Layout.Sidebar>
             <NavLinks />
@@ -56,6 +47,6 @@ export default class MyApp extends App {
           </Layout.Main>
         </Layout>
       </Container>
-    )
+    );
   }
 }

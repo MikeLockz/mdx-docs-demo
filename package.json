@@ -16,7 +16,9 @@
     "remark-emoji": "^2.0.2",
     "remark-images": "^0.16.1",
     "remark-slug": "^5.1.1",
-    "remark-unwrap-images": "^0.1.0"
+    "remark-unwrap-images": "^0.1.0",
+    "rimble-ui": "^0.7.1",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
     "@mdx-js/loader": "^0.16.6"
